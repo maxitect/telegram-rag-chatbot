@@ -18,7 +18,9 @@ async def mirror(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("https://github.com/maxitect/telegram-rag-chatbot")
+    await update.message.reply_text(
+        "https://github.com/maxitect/telegram-rag-chatbot"
+    )
 
 app = ApplicationBuilder().token(os.getenv('TELEGRAM_CHATBOT_API_KEY')).build()
 app.add_handler(CommandHandler("code", code))
