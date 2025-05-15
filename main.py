@@ -22,6 +22,5 @@ async def code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 app = ApplicationBuilder().token(os.getenv('TELEGRAM_CHATBOT_API_KEY')).build()
 app.add_handler(CommandHandler("code", code))
-app.add_handler(MessageHandler(
-    filters.TEXT & ~filters.COMMAND, mirror))
+app.add_handler(MessageHandler(filters.TEXT, mirror))
 app.run_polling()
