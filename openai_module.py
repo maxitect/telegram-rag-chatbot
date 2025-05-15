@@ -15,9 +15,10 @@ class OpenAIModule:
         context = self.chroma.get_context_for_query(message)
 
         prompt = f"""
-        You are a helpful assistant. Use the following context to answer the
-        user's question. If the context doesn't contain relevant information,
-        say so.
+        Based on the context provided below, extracted from the results from
+        this query: {message}, answer the user's question. If the context
+        doesn't contain relevant information, say so. Do not try to make
+        anything up or infer additional information than the context provided.
 
 Context:
 {context}
