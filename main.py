@@ -7,14 +7,21 @@ from telegram.ext import (
     CommandHandler,
 )
 from dotenv import load_dotenv
+from openai_module import OpenAIModule
 import os
 
 load_dotenv()
 
+openai_module = OpenAIModule()
 
-async def mirror(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+
+async def handle_message(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+) -> None:
     message_text = update.message.text
-    await update.message.reply_text(message_text)
+    response = openai_module.get_response(message_text)
+    await update.message.reply_text(response)
 
 
 async def code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -24,5 +31,6 @@ async def code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 app = ApplicationBuilder().token(os.getenv('TELEGRAM_CHATBOT_API_KEY')).build()
 app.add_handler(CommandHandler("code", code))
-app.add_handler(MessageHandler(filters.TEXT, mirror))
+app.add_handler(MessageHandler(
+    filters.TEXT & ~filters.COMMAND, handle_message))
 app.run_polling()
