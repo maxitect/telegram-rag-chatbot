@@ -1,0 +1,10 @@
+# To create the conda environment, run:
+#   conda env create -f environment.yml
+name: telegram-bot
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.13.3
+  - python-telegram-bot=22.0
+  - python-dotenv=1.1.0
