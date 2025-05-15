@@ -11,7 +11,7 @@ class OpenAIModule:
 
     def get_response(self, message: str) -> str:
         response = self.client.responses.create(
-            model="gpt-4o-mini",
+            model="gpt-4.1-nano",
             input=message
         )
         return response.output_text
