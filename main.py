@@ -23,7 +23,7 @@ async def handle_message(
 ) -> None:
     message_text = update.message.text
     response = openai_module.get_response(message_text)
-    await update.message.reply_text(response)
+    await update.message.reply_text(response, parse_mode='Markdown')
 
 
 async def query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
