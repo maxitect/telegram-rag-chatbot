@@ -131,3 +131,25 @@ class ChromaModule:
             })
 
         return formatted_results
+
+    def get_context_for_query(
+            self, query: str, max_context_length: int = 3000
+    ) -> str:
+        results = self.query_documents(query, n_results=5)
+
+        context_parts = []
+        current_length = 0
+
+        for result in results:
+            content = result['content']
+            source = result['metadata']['source']
+
+            part = f"From {source}:\n{content}\n\n"
+
+            if current_length + len(part) > max_context_length:
+                break
+
+            context_parts.append(part)
+            current_length += len(part)
+
+        return ''.join(context_parts)
