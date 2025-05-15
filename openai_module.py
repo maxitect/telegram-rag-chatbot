@@ -15,13 +15,12 @@ class OpenAIModule:
         context = self.chroma.get_context_for_query(message)
 
         prompt = f"""
-        Based on the context provided below, extracted from the results
-        (retrieved from blog posts) of this query: {message}, answer the
-        user's question. If the context doesn't contain relevant information,
-        say that it is not in the blog posts. Do not try to make anything up
-        or infer additional information than the context provided.
+        Based on the blog posts provided below, extracted from the results of
+        this query: {message}, answer the user's question. If the blog posts
+        don't contain relevant information, say so. Do not try to make
+        anything up or infer additional information than the context provided.
 
-Context:
+Blog posts:
 {context}
 """
 
