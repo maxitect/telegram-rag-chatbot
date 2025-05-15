@@ -1,0 +1,8 @@
+services:
+  telegram-bot:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./docs:/app/docs
+      - ./chroma_db:/app/chroma_db
