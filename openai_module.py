@@ -12,7 +12,7 @@ class OpenAIModule:
         self.chroma = ChromaModule()
 
     def get_response(self, message: str) -> str:
-        context = self.chroma.query_documents(message)
+        context = self.chroma.get_context_for_query(message)
 
         prompt = f"""
         You are a helpful assistant. Use the following context to answer the
