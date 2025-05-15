@@ -22,10 +22,7 @@ class OpenAIModule:
 
 Context:
 {context}
-
-User question: {message}
-
-Answer:"""
+"""
 
         response = self.client.responses.create(
             model="gpt-4.1-nano",
