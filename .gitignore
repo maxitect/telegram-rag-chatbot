@@ -87,3 +87,6 @@ claude-conversations/
 .history/
 .aider*
 wandb/
+
+# Training data
+/docs
