@@ -90,3 +90,4 @@ wandb/
 
 # Training data
 /docs
+/chroma_db
