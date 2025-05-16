@@ -2,7 +2,7 @@
 
 A Telegram bot with retrieval-augmented generation (RAG) capabilities using ChromaDB and OpenAI.
 
-## Setup
+## Local Setup
 
 ### 1. Clone the Repository
 
