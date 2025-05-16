@@ -60,6 +60,45 @@ python ingest_docs.py
 python main.py
 ```
 
+## Docker Setup
+
+1. **Add your documents** to the `docs/` folder as above (Markdown files)
+
+2. **Build and run:**
+
+   ```bash
+   docker-compose up --build -d
+   ```
+
+   The container will automatically:
+
+   - Install dependencies
+   - Ingest documents from `docs/` folder
+   - Start the Telegram bot
+
+3. **Check logs:**
+
+   ```bash
+   docker-compose logs -f
+   ```
+
+4. **Stop the bot:**
+   ```bash
+   docker-compose down
+   ```
+
+> [!NOTE]
+> Document ingestion runs automatically on container startup. The bot will start once ingestion completes.
+
+### Data Persistence
+
+The Docker setup includes persistent volumes for:
+
+- `./docs` - Your markdown documents
+- `./chroma_db` - Vector database storage
+
+Your data persists between container restarts.
+
 ## Commands
 
 - `/query <search terms>` - Search the document database
